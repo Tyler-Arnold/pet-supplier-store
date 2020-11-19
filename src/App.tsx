@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FirebaseAuthProvider } from "@react-firebase/auth";
+import React from "react";
+import Application from "./Components/Application";
+import { firebaseConfig } from "./firebase";
+import firebase from "firebase/app";
+import { UserContainer } from "./containers/UserContainer";
+import { StockContainer } from "./containers/StockContainer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
+      <UserContainer.Provider>
+        <StockContainer.Provider>
+          <Application />
+        </StockContainer.Provider>
+      </UserContainer.Provider>
+    </FirebaseAuthProvider>
   );
 }
-
 export default App;
