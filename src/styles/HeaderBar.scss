@@ -1,0 +1,54 @@
+.header-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid darkslategrey;
+
+  > .links {
+    > a {
+      margin: 1em 0.5em;
+    }
+  }
+
+  > .profile-dropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: azure;
+
+    border-left: 1px solid lightgrey;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+    &:hover {
+      background-color: adjust-color($color: #a8a8a8, $alpha: 1);
+    }
+
+    > .dropdown-icon {
+      display: flex;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      font-weight: bolder;
+      font-size: larger;
+      width: 2rem;
+      height: 2rem;
+      > div {
+        margin: auto;
+      }
+    }
+    > .profile-name {
+      margin-right: 1em;
+      > h2 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+    > .profile-picture {
+      height: 2em;
+      width: 2em;
+      border-radius: 0.8em;
+    }
+  }
+}

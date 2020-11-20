@@ -15,6 +15,9 @@ const HeaderBar = () => {
         <Link to="/profile/">Profile</Link>
       </nav>
       <div className="profile-dropdown">
+        <div className="dropdown-icon">
+          <div>V</div>
+        </div>
         <div className="profile-name">
           <h2>{userName}</h2>
         </div>
@@ -25,9 +28,6 @@ const HeaderBar = () => {
               photoURL || "https://res.cloudinary.com/dqcsk8rsc/image/upload/v1577268053/avatar-1-bitmoji_upgwhc.png"
             })  no-repeat center center`,
             backgroundSize: "cover",
-            height: "50px",
-            width: "50px",
-            borderRadius: "20px",
           }}
         ></div>
       </div>
