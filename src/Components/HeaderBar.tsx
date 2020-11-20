@@ -11,8 +11,12 @@ const HeaderBar = () => {
   return (
     <div className="header-bar">
       <nav className="links">
-        <Link to="/">Home</Link>
-        <Link to="/profile/">Profile</Link>
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+        <Link to="/profile/">
+          <p>Profile</p>
+        </Link>
       </nav>
       <div className="profile-dropdown">
         <div className="dropdown-icon">

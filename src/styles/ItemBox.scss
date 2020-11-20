@@ -1,0 +1,33 @@
+.item-box {
+  display: flex;
+  flex-direction: column;
+  $item-box-padding: 1rem;
+
+  width: 10em;
+  margin: 2em 1em;
+  border: 1px solid lightgray;
+  > .item-image {
+    padding: 0.3em;
+    width: auto;
+    height: 6em;
+    > img {
+      display: flex;
+      background-color: lightcyan;
+      height: 6em;
+    }
+  }
+  > .item-title {
+    margin: 0;
+    padding: 0.3em $item-box-padding;
+    padding-bottom: 0.1em;
+  }
+  > .item-desc {
+    margin: 0;
+    padding: 0.3em $item-box-padding;
+  }
+}
+
+.item-grid {
+  display: flex;
+  width: auto;
+}

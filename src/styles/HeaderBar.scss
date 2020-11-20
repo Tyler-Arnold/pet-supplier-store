@@ -1,14 +1,46 @@
+@import "./Colours.scss";
+
 .header-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 
+  height: 3em;
   border-bottom: 1px solid darkslategrey;
 
+  background-color: $header-background;
+
   > .links {
+    margin-left: 4em;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height: 100%;
     > a {
-      margin: 1em 0.5em;
+      display: flex;
+      height: 100%;
+      padding: 0 0.7em;
+      border-left: 1px solid lightgrey;
+      align-items: center;
+
+      background-color: desaturate($header-background, 20%);
+      color: $sub-text;
+      text-decoration: none;
+      transition: ease-in 0.3s;
+      > p {
+        margin: 0;
+      }
+    }
+    > a:last-of-type {
+      border-right: 1px solid lightgrey;
+    }
+    > a:hover {
+      background-color: darken($color: $header-background, $amount: 10%);
+    }
+    > a:visited {
+      color: lighten($color: $sub-text, $amount: 10%);
     }
   }
 
@@ -16,15 +48,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: azure;
+    background-color: desaturate($color: $header-background, $amount: 10%);
+    height: 100%;
 
     border-left: 1px solid lightgrey;
     padding-right: 1em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    transition: ease-in 0.3s;
 
     &:hover {
-      background-color: adjust-color($color: #a8a8a8, $alpha: 1);
+      background-color: desaturate($color: $header-background, $amount: 80%);
     }
 
     > .dropdown-icon {
