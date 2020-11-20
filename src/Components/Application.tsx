@@ -23,7 +23,7 @@ function Application() {
   return user ? (
     <Router>
       <HomePage path="/" />
-      <ProfilePage path="/Profile/" />
+      <ProfilePage path="/profile/" />
     </Router>
   ) : (
     <Router>

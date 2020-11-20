@@ -13,7 +13,7 @@ function useStock() {
    */
   useInterval(() => {
     RetrieveStock();
-  }, 30000);
+  }, 300000);
 
   async function RetrieveStock() {
     if (token) {

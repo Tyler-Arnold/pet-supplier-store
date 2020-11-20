@@ -5,6 +5,7 @@ import { firebaseConfig } from "./firebase";
 import firebase from "firebase/app";
 import { UserContainer } from "./containers/UserContainer";
 import { StockContainer } from "./containers/StockContainer";
+import "./App.scss";
 
 function App() {
   return (

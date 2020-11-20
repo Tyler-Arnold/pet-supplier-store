@@ -5,6 +5,7 @@ import { useContainer } from "unstated-next";
 import { UserContainer } from "../containers/UserContainer";
 import firebase from "firebase";
 import { StockContainer } from "../containers/StockContainer";
+import HeaderBar from "./HeaderBar";
 
 const HomePage = (props: RouteComponentProps) => {
   const user = useContainer(UserContainer);
@@ -28,6 +29,7 @@ const HomePage = (props: RouteComponentProps) => {
 
   return (
     <div>
+      <HeaderBar />
       <div>
         <div
           style={{
