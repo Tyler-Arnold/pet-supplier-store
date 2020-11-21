@@ -1,8 +1,6 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { RouteComponentProps } from "@reach/router";
-import { Item } from "../../getters";
 import { useContainer } from "unstated-next";
-import { UserContainer } from "../../containers/UserContainer";
 import firebase from "firebase";
 import { StockContainer } from "../../containers/StockContainer";
 import HeaderBar from "../utility/HeaderBar";
@@ -14,13 +12,7 @@ const HomePage = (props: RouteComponentProps) => {
   return (
     <div>
       <HeaderBar />
-      {stock && (
-        <>
-          <div>
-            <ItemGrid items={stock} />
-          </div>
-        </>
-      )}
+      {stock && <ItemGrid items={stock} />}
       <button
         onClick={() => {
           firebase.auth().signOut();
