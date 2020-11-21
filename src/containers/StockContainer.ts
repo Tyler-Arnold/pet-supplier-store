@@ -17,7 +17,13 @@ function useStock() {
 
   async function RetrieveStock() {
     if (token) {
-      setStock(await GetStock(token));
+      const stock = await GetStock(token);
+
+      if (typeof stock === "number") {
+        console.log(stock);
+        return;
+      }
+      setStock(stock);
     }
   }
 

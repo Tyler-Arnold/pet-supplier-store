@@ -6,29 +6,22 @@ export interface Item {
   description: string;
 }
 
-export const GetStock = async (userToken?: string): Promise<Item[]> => {
+export const GetStock = async (userToken?: string): Promise<Item[] | number> => {
   const token = userToken;
 
-  return fetch(config.apiUrl, {
+  const stock = fetch(config.apiUrl, {
     method: "GET",
     headers: new Headers({
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     }),
-  })
-    .then((res) => {
-      if (res.status === 401) {
-        // unauthorised, go get new token
-      }
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then((res) => {
-      console.log(res);
-      return res;
-    })
-    .then((res) => {
-      return res.stock as Item[];
-    });
+  }).then(async (res) => {
+    if (res.ok) {
+      return (await res.json()).stock as Item[];
+    } else {
+      return res.status;
+    }
+  });
+
+  return stock;
 };
