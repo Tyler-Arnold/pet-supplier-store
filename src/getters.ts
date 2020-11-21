@@ -1,6 +1,4 @@
-import { useContainer } from "unstated-next";
 import config from "./config";
-import { UserContainer } from "./containers/UserContainer";
 
 export interface Item {
   id: number;

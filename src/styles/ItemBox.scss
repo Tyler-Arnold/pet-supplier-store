@@ -6,6 +6,7 @@
   width: 10em;
   margin: 2em 1em;
   border: 1px solid lightgray;
+  background-color: $main-background;
   > .item-image {
     padding: 0.3em;
     width: auto;
@@ -28,6 +29,17 @@
 }
 
 .item-grid {
-  display: flex;
+  display: grid;
   width: auto;
+  background-color: $sub-background;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  grid-auto-flow: row;
+  justify-items: center;
+  :nth-child(n + 22) {
+    display: none;
+  }
 }
