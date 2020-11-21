@@ -26,27 +26,6 @@ const HeaderBar = () => {
   );
 };
 
-const ProfileDropdownMenu = (props: {
-  isProfileDropped: boolean;
-  username: string;
-  photoURL?: string;
-  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-}) => {
-  return (
-    <div className={`profile-dropdown-menu ${props.isProfileDropped ? "menu-shown" : "menu-hidden"}`}>
-      <div
-        className="sign-out"
-        onClick={() => {
-          firebase.auth().signOut();
-        }}
-      >
-        <h4>Sign Out</h4>
-      </div>
-      <ProfileBar username={props.username} photoURL={props.photoURL} onClick={props.onClick} />
-    </div>
-  );
-};
-
 const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
   const [isProfileDropped, setIsProfileDropped] = useState<boolean>(false);
 
@@ -68,6 +47,27 @@ const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
         photoURL={props.photoURL}
         onClick={dropdownClickHandler}
       />
+    </div>
+  );
+};
+
+const ProfileDropdownMenu = (props: {
+  isProfileDropped: boolean;
+  username: string;
+  photoURL?: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}) => {
+  return (
+    <div className={`profile-dropdown-menu ${props.isProfileDropped ? "menu-shown" : "menu-hidden"}`}>
+      <div
+        className="sign-out"
+        onClick={() => {
+          firebase.auth().signOut();
+        }}
+      >
+        <h4>Sign Out</h4>
+      </div>
+      <ProfileBar username={props.username} photoURL={props.photoURL} onClick={props.onClick} />
     </div>
   );
 };
