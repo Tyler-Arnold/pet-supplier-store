@@ -4,8 +4,8 @@ import SignIn from "./screens/SignIn";
 import ProfilePage from "./screens/ProfilePage";
 import HomePage from "./screens/HomePage";
 import { useContainer } from "unstated-next";
-import { UserContainer } from "../containers/UserContainer";
-import { StockContainer } from "../containers/StockContainer";
+import { UserContainer } from "./../containers/UserContainer";
+import { StockContainer } from "./../containers/StockContainer";
 
 function Application() {
   const user = useContainer(UserContainer).user;
