@@ -9,8 +9,7 @@ export interface Item {
 }
 
 export const GetStock = async (userToken?: string): Promise<Item[]> => {
-  const user = useContainer(UserContainer);
-  const token = userToken ?? user.token;
+  const token = userToken;
 
   return fetch(config.apiUrl, {
     method: "GET",
@@ -22,7 +21,6 @@ export const GetStock = async (userToken?: string): Promise<Item[]> => {
     .then((res) => {
       if (res.status === 401) {
         // unauthorised, go get new token
-        user.updateUser();
       }
       if (res.ok) {
         return res.json();

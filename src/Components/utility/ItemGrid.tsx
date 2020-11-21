@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Item } from "../../getters";
 
 interface ItemGridProps {
@@ -8,10 +8,19 @@ interface ItemGridProps {
 }
 
 const ItemGrid = (props: ItemGridProps) => {
+  const rows = props.rows;
+  const columns = props.columns;
+  let items = props.items;
+
+  while (items.length < 20) {
+    items.push(...props.items);
+  }
+
   return (
     <div className="item-grid">
-      <ItemBox item={props.items[0]} />
-      <ItemBox item={props.items[1]} />
+      {items.map((item) => (
+        <ItemBox item={item} />
+      ))}
     </div>
   );
 };
