@@ -7,6 +7,15 @@ interface ItemGridProps {
   columns?: number;
 }
 
+const ItemGrid = (props: ItemGridProps) => {
+  return (
+    <div className="item-grid">
+      <ItemBox item={props.items[0]} />
+      <ItemBox item={props.items[1]} />
+    </div>
+  );
+};
+
 const ItemBox = (props: { item: Item }) => {
   const prepItemString = (description: string) => {
     if (description.length > 140) {
@@ -23,15 +32,6 @@ const ItemBox = (props: { item: Item }) => {
       </div>
       <h3 className="item-title">{itemTitle}</h3>
       <p className="item-desc">{prepItemString(props.item.description)}</p>
-    </div>
-  );
-};
-
-const ItemGrid = (props: ItemGridProps) => {
-  return (
-    <div className="item-grid">
-      <ItemBox item={props.items[0]} />
-      <ItemBox item={props.items[1]} />
     </div>
   );
 };
