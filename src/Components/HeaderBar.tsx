@@ -56,7 +56,12 @@ const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
   };
   return (
     <div className="profile-dropdown">
-      <ProfileBar username={props.username} photoURL={props.photoURL} onClick={dropdownClickHandler} />
+      <ProfileBar
+        isShown={!isProfileDropped}
+        username={props.username}
+        photoURL={props.photoURL}
+        onClick={dropdownClickHandler}
+      />
       <ProfileDropdownMenu
         isProfileDropped={isProfileDropped}
         username={props.username}
@@ -70,10 +75,16 @@ const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
 const ProfileBar = (props: {
   username: string;
   photoURL?: string;
+  isShown?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }) => {
+  let isShown = props.isShown;
+  if (isShown === undefined) {
+    isShown = true;
+  }
+
   return (
-    <div className="profile-bar" onClick={props.onClick}>
+    <div className={`profile-bar ${isShown ? "shown" : "bar-hidden"}`} onClick={props.onClick}>
       <div className="dropdown-icon">
         <div>V</div>
       </div>

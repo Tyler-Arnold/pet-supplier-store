@@ -69,6 +69,10 @@
       background-color: saturate($color: $header-background, $amount: 50%);
     }
   }
+  &.bar-hidden {
+    visibility: hidden;
+  }
+
   > .dropdown-icon {
     display: flex;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -101,14 +105,25 @@
 }
 
 .profile-dropdown-menu {
-  display: none;
-}
-
-.profile-dropdown-menu.menu-shown {
   position: absolute;
-  top: 3em;
+  top: -5em;
+  right: 0;
   display: flex;
   flex-direction: column;
+
+  border: 1px solid $border-main;
+
+  animation: slide-out 1s;
+
+  @keyframes slide-out {
+    from {
+      top: 0em;
+    }
+    to {
+      top: -1.85em;
+    }
+  }
+
   > .sign-out {
     display: flex;
     height: 2em;
@@ -129,5 +144,23 @@
     border-left: 0;
     padding: 0.3em 0;
     padding-right: 1em;
+  }
+}
+
+.profile-dropdown-menu.menu-shown {
+  position: absolute;
+  top: 0em;
+  display: flex;
+  flex-direction: column;
+
+  animation: slide-in 1s;
+
+  @keyframes slide-in {
+    from {
+      top: -1.85em;
+    }
+    to {
+      top: 0em;
+    }
   }
 }
