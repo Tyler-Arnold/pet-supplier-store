@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Router } from "@reach/router";
-import SignIn from "./SignIn";
-import ProfilePage from "./ProfilePage";
-import HomePage from "./HomePage";
+import SignIn from "./screens/SignIn";
+import ProfilePage from "./screens/ProfilePage";
+import HomePage from "./screens/HomePage";
 import { useContainer } from "unstated-next";
 import { UserContainer } from "../containers/UserContainer";
 import { StockContainer } from "../containers/StockContainer";
@@ -23,11 +23,13 @@ function Application() {
   return user ? (
     <Router>
       <HomePage path="/" />
+      <HomePage path="/items/" />
+      <ProfilePage path="/specials/" />
       <ProfilePage path="/profile/" />
     </Router>
   ) : (
     <Router>
-      <SignIn path="/" />
+      <SignIn path="/" default={true} />
     </Router>
   );
 }

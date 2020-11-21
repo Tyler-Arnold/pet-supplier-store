@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import firebase from "firebase";
+import HeaderBar from "../utility/HeaderBar";
 
 const SignIn = (props: RouteComponentProps) => {
   const [error, setError] = useState(null);
@@ -17,6 +18,7 @@ const SignIn = (props: RouteComponentProps) => {
 
   return (
     <div>
+      <HeaderBar />
       <h1>Sign In</h1>
       <div>
         {error !== null && <div>{error}</div>}

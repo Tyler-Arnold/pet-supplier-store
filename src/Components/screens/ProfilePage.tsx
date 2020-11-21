@@ -2,7 +2,8 @@ import React from "react";
 import firebase from "firebase";
 import { RouteComponentProps } from "@reach/router";
 import { useContainer } from "unstated-next";
-import { UserContainer } from "../containers/UserContainer";
+import { UserContainer } from "../../containers/UserContainer";
+import HeaderBar from "../utility/HeaderBar";
 const ProfilePage = (props: RouteComponentProps) => {
   const user = useContainer(UserContainer).user;
   const photoURL = user?.photoURL;
@@ -11,6 +12,7 @@ const ProfilePage = (props: RouteComponentProps) => {
 
   return (
     <div>
+      <HeaderBar />
       <div>
         <div
           style={{

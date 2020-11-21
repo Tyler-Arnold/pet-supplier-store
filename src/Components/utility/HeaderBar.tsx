@@ -2,7 +2,7 @@ import { Link } from "@reach/router";
 import firebase from "firebase";
 import React, { useState } from "react";
 import { useContainer } from "unstated-next";
-import { UserContainer } from "../containers/UserContainer";
+import { UserContainer } from "../../containers/UserContainer";
 
 const HeaderBar = () => {
   const user = useContainer(UserContainer);
@@ -16,8 +16,14 @@ const HeaderBar = () => {
           <Link to="/">
             <p>Home</p>
           </Link>
+          <Link to="/items/">
+            <p>Products</p>
+          </Link>
+          <Link to="/specials/">
+            <p>Special Offers</p>
+          </Link>
           <Link to="/profile/">
-            <p>Profile</p>
+            <p>Other Stuff</p>
           </Link>
         </nav>
         <ProfileDropdown username={userName} photoURL={photoURL} />
@@ -60,12 +66,17 @@ const ProfileDropdownMenu = (props: {
   return (
     <div className={`profile-dropdown-menu ${props.isProfileDropped ? "menu-shown" : "menu-hidden"}`}>
       <div
-        className="sign-out"
+        className="sign-out dropdown-bar"
         onClick={() => {
           firebase.auth().signOut();
         }}
       >
         <h4>Sign Out</h4>
+      </div>
+      <div className="profile-link dropdown-bar">
+        <Link to="/profile/">
+          <h4>Profile</h4>
+        </Link>
       </div>
       <ProfileBar username={props.username} photoURL={props.photoURL} onClick={props.onClick} />
     </div>

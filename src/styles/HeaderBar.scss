@@ -106,7 +106,7 @@
 
 .profile-dropdown-menu {
   position: absolute;
-  top: -5em;
+  top: -10em;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -120,16 +120,18 @@
       top: 0em;
     }
     to {
-      top: -1.85em;
+      top: -10em;
     }
   }
 
-  > .sign-out {
+  > .dropdown-bar {
     display: flex;
     height: 2em;
-    background-color: $header-background;
     align-items: center;
     padding-left: 1em;
+
+    background-color: $header-background;
+    color: $main-text;
 
     &:hover {
       background-color: desaturate($color: $header-background, $amount: 80%);
@@ -137,6 +139,12 @@
 
     h4 {
       margin: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    > a:visited {
+      color: lighten($color: $main-text, $amount: 10%);
     }
   }
   > .profile-bar {
@@ -157,7 +165,7 @@
 
   @keyframes slide-in {
     from {
-      top: -1.85em;
+      top: -10em;
     }
     to {
       top: 0em;

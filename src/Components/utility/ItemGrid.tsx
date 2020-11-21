@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "../getters";
+import { Item } from "../../getters";
 
 interface ItemGridProps {
   items: Item[];
