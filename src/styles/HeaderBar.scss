@@ -48,39 +48,86 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: desaturate($color: $header-background, $amount: 10%);
     height: 100%;
+  }
+}
 
-    border-left: 1px solid lightgrey;
-    padding-right: 1em;
-    transition: ease-in 0.3s;
+.profile-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: desaturate($color: $header-background, $amount: 10%);
+  height: 100%;
+
+  border-left: 1px solid lightgrey;
+  padding-right: 1em;
+  transition: ease-in 0.3s;
+
+  &:hover {
+    background-color: desaturate($color: $header-background, $amount: 80%);
+    > .dropdown-icon {
+      background-color: saturate($color: $header-background, $amount: 50%);
+    }
+  }
+  > .dropdown-icon {
+    display: flex;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: bolder;
+    font-size: larger;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.5em;
+
+    border-radius: 0.9em;
+    box-shadow: 0 0 0.09em #888888;
+    background-color: $header-background;
+
+    > div {
+      margin: auto;
+    }
+  }
+  > .profile-name {
+    margin-right: 1em;
+    > h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  > .profile-picture {
+    height: 2em;
+    width: 2em;
+    border-radius: 0.8em;
+  }
+}
+
+.profile-dropdown-menu {
+  display: none;
+}
+
+.profile-dropdown-menu.menu-shown {
+  position: absolute;
+  top: 3em;
+  display: flex;
+  flex-direction: column;
+  > .sign-out {
+    display: flex;
+    height: 2em;
+    background-color: $header-background;
+    align-items: center;
+    padding-left: 1em;
 
     &:hover {
       background-color: desaturate($color: $header-background, $amount: 80%);
     }
 
-    > .dropdown-icon {
-      display: flex;
-      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-      font-weight: bolder;
-      font-size: larger;
-      width: 2rem;
-      height: 2rem;
-      > div {
-        margin: auto;
-      }
+    h4 {
+      margin: 0;
     }
-    > .profile-name {
-      margin-right: 1em;
-      > h2 {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-    }
-    > .profile-picture {
-      height: 2em;
-      width: 2em;
-      border-radius: 0.8em;
-    }
+  }
+  > .profile-bar {
+    border-top: 1px solid $border-subtle;
+    border-left: 0;
+    padding: 0.3em 0;
+    padding-right: 1em;
   }
 }
