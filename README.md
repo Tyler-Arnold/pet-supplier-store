@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Pet Supplier Store Front-End
+[![Build Status](http://192.168.0.69:6969/buildStatus/icon?job=Tyler-PetSupplierStore-Frontend)](http://192.168.0.69:6969/job/Tyler-PetSupplierStore-Frontend/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
