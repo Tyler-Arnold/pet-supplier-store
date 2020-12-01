@@ -1,3 +1,4 @@
+import { Link } from "@reach/router";
 import React from "react";
 import { Item } from "../../getters";
 
@@ -35,13 +36,13 @@ const ItemBox = (props: { item: Item }) => {
 
   const itemTitle = prepItemString(props.item.title);
   return (
-    <div className="item-box">
+    <Link to={`/item/${props.item.itemId}`} className="item-box">
       <div className="item-image">
         <img alt={itemTitle}></img>
       </div>
       <h3 className="item-title">{itemTitle}</h3>
       <p className="item-desc">{prepItemString(props.item.description)}</p>
-    </div>
+    </Link>
   );
 };
 

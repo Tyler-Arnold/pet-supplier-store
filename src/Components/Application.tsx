@@ -6,6 +6,7 @@ import HomePage from "./screens/HomePage";
 import { useContainer } from "unstated-next";
 import { UserContainer } from "./../containers/UserContainer";
 import { StockContainer } from "./../containers/StockContainer";
+import ItemPage from "./screens/ItemPage";
 
 function Application() {
   const user = useContainer(UserContainer).user;
@@ -24,6 +25,7 @@ function Application() {
     <Router>
       <HomePage path="/" />
       <HomePage path="/items/" />
+      <ItemPage path="/item/:itemId" />
       <ProfilePage path="/specials/" />
       <ProfilePage path="/profile/" />
     </Router>

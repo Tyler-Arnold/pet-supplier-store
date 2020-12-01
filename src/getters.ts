@@ -1,7 +1,7 @@
 import config from "./config";
 
 export interface Item {
-  id: number;
+  itemId: number;
   title: string;
   description: string;
 }
