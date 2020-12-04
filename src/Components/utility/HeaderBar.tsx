@@ -2,12 +2,15 @@ import { Link } from "@reach/router";
 import firebase from "firebase";
 import React, { useState } from "react";
 import { useContainer } from "unstated-next";
+import { BasketContainer } from "../../containers/BasketContainer";
 import { UserContainer } from "../../containers/UserContainer";
 
 const HeaderBar = () => {
   const user = useContainer(UserContainer);
   const photoURL = user.user?.photoURL ?? undefined;
   const userName = user.user?.displayName ?? user.user?.email ?? "Anonymous";
+
+  const basketCount = useContainer(BasketContainer).basket?.length ?? 0;
 
   return (
     <>
@@ -24,6 +27,9 @@ const HeaderBar = () => {
           </Link>
           <Link to="/profile/">
             <p>Other Stuff</p>
+          </Link>
+          <Link to="/basket/">
+            <p>Basket{basketCount > 0 ? ` (${basketCount})` : ""}</p>
           </Link>
         </nav>
         <ProfileDropdown username={userName} photoURL={photoURL} />

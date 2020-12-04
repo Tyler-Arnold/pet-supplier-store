@@ -3,6 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import { useContainer } from "unstated-next";
 import { StockContainer } from "../../containers/StockContainer";
 import HeaderBar from "../utility/HeaderBar";
+import { BasketContainer } from "../../containers/BasketContainer";
 
 interface ItemPageProps extends RouteComponentProps {
   itemId?: string;
@@ -10,6 +11,7 @@ interface ItemPageProps extends RouteComponentProps {
 
 const ItemPage = (props: ItemPageProps) => {
   const stock = useContainer(StockContainer).stock;
+  const basket = useContainer(BasketContainer);
 
   const itemId = props.itemId;
   if (!itemId) {
@@ -31,6 +33,7 @@ const ItemPage = (props: ItemPageProps) => {
         <div className="item-description">
           <p>{item.description}</p>
         </div>
+        <button onClick={() => basket.addToBasket(item)}>Add to Basket</button>
       </div>
     </div>
   );

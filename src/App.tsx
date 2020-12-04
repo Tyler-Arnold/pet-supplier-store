@@ -6,13 +6,16 @@ import firebase from "firebase/app";
 import { UserContainer } from "./containers/UserContainer";
 import { StockContainer } from "./containers/StockContainer";
 import "./App.scss";
+import { BasketContainer } from "./containers/BasketContainer";
 
 function App() {
   return (
     <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
       <UserContainer.Provider>
         <StockContainer.Provider>
-          <Application />
+          <BasketContainer.Provider>
+            <Application />
+          </BasketContainer.Provider>
         </StockContainer.Provider>
       </UserContainer.Provider>
     </FirebaseAuthProvider>
