@@ -7,6 +7,7 @@ import { useContainer } from "unstated-next";
 import { UserContainer } from "./../containers/UserContainer";
 import { StockContainer } from "./../containers/StockContainer";
 import ItemPage from "./screens/ItemPage";
+import BasketPage from "./screens/BasketPage";
 
 function Application() {
   const user = useContainer(UserContainer).user;
@@ -28,6 +29,7 @@ function Application() {
       <ItemPage path="/item/:itemId" />
       <ProfilePage path="/specials/" />
       <ProfilePage path="/profile/" />
+      <BasketPage path="/basket/" />
     </Router>
   ) : (
     <Router>
