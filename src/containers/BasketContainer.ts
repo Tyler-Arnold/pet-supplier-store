@@ -10,11 +10,19 @@ function useBasket() {
   const addToBasket = (item: Item) => {
     if (basket) {
       setBasket([...basket, item]);
+    } else {
+      setBasket([item]);
     }
-    setBasket([item]);
   };
 
-  return { basket, addToBasket };
+  const removeFromBasket = (item: Item) => {
+    const newBasket = basket?.filter((bItem) => bItem !== item); // filter all items in basket that are the item to be removed
+    if (newBasket) {
+      setBasket(newBasket);
+    }
+  };
+
+  return { basket, addToBasket, removeFromBasket };
 }
 
 export const BasketContainer = createContainer(useBasket);
