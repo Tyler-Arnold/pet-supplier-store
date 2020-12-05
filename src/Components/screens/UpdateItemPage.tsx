@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import HeaderBar from "../utility/HeaderBar";
-import { Item } from "../../getters";
 import { StockContainer } from "../../containers/StockContainer";
 import { useContainer } from "unstated-next";
 

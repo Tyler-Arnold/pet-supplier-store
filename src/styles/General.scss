@@ -1,0 +1,14 @@
+button {
+  font-weight: bold;
+  background-color: $header-background;
+  border: 0;
+  border-radius: 0.7em;
+  padding: 0.5em 0.7em;
+  &:hover{
+    background-color: darken($header-background, 10);
+  }
+  &:focus{
+    background-color: darken($header-background, 15);
+    box-shadow: 0.1em 0.05em 0 0.5em inset $sub-text;
+  }
+}

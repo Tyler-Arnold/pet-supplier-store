@@ -5,12 +5,25 @@
 
   width: 10em;
   margin: 2em 1em;
-  border: 1px solid lightgray;
+  border: 0;
   background-color: $main-background;
+  box-shadow: 0.2em 0.1em 0.8em -0.3em $sub-text;
+  text-decoration: none;
+  color: $sub-text;
+
+  &:hover {
+    background-color: darken($main-background, 5);
+  }
+
+  &:focus {
+    background-color: darken($main-background, 10);
+    box-shadow: 0.2em 0.1em 0.8em -0.3em $sub-text inset;
+  }
+
   > .item-image {
     padding: 0.3em;
     width: auto;
-    height: 6em;
+    height: auto;
     > img {
       display: flex;
       background-color: lightcyan;
