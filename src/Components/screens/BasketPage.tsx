@@ -36,11 +36,13 @@ const ItemList = (props: { items: Item[] }) => {
 
 const ItemRow = (props: { item: Item; onClick: () => void }) => {
   return (
-    <div>
-      <h3>{props.item.title}</h3>
-      <p>{props.item.description}</p>
-      <p>£3.99</p>
-      <button onClick={props.onClick}>Remove from Basket</button>
+    <div className="basket-item">
+      <h3 className="item-title">{props.item.title}</h3>
+      <p className="item-desc">{props.item.description}</p>
+      <p className="item-price">£3.99</p>
+      <button className="item-remove" onClick={props.onClick}>
+        Remove from Basket
+      </button>
     </div>
   );
 };

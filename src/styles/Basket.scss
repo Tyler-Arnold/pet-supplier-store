@@ -1,0 +1,38 @@
+.basket-list {
+  padding: 1em 2em;
+  background-color: lighten($neutral, 19);
+  display: flex;
+  flex-direction: column;
+
+  .basket-item {
+    height: 3em;
+    margin: 0.2em 0.6em;
+
+    display: grid;
+    grid-template-areas: "img tit prc act" "img dsc prc act";
+    grid-template-columns: 1fr 3fr 1fr 5fr;
+    grid-template-rows: 2fr 1fr;
+    align-items: center;
+
+    background-color: lighten($neutral, 15);
+
+    .item-title {
+      grid-area: tit;
+      margin: 0;
+    }
+    .item-desc {
+      grid-area: dsc;
+      margin: 0;
+    }
+    .item-price {
+      grid-area: prc;
+      margin: 0;
+      font-weight: bold;
+    }
+    .item-remove {
+      grid-area: act;
+      justify-self: end;
+      margin-right: 10em;
+    }
+  }
+}
