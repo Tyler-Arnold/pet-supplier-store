@@ -4,6 +4,7 @@ button {
   border: 0;
   border-radius: 0.7em;
   padding: 0.5em 0.7em;
+  margin: 0.3em 0.7em;
   &:hover {
     background-color: darken($header-background, 10);
   }

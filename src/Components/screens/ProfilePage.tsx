@@ -13,7 +13,7 @@ const ProfilePage = (props: RouteComponentProps) => {
   return (
     <div>
       <HeaderBar />
-      <div>
+      <div className="profile-page">
         <div
           style={{
             background: `url(${
@@ -28,14 +28,14 @@ const ProfilePage = (props: RouteComponentProps) => {
           <h2>{displayName}</h2>
           <h3>{email}</h3>
         </div>
+        <button
+          onClick={() => {
+            firebase.auth().signOut();
+          }}
+        >
+          Sign out
+        </button>
       </div>
-      <button
-        onClick={() => {
-          firebase.auth().signOut();
-        }}
-      >
-        Sign out
-      </button>
     </div>
   );
 };

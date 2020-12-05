@@ -12,14 +12,16 @@ const HomePage = (props: RouteComponentProps) => {
   return (
     <div>
       <HeaderBar />
-      {stock && <ItemGrid items={stock} />}
-      <button
-        onClick={() => {
-          firebase.auth().signOut();
-        }}
-      >
-        Sign out
-      </button>
+      <div className="home-page">
+        {stock && <ItemGrid items={stock} />}
+        <button
+          onClick={() => {
+            firebase.auth().signOut();
+          }}
+        >
+          Sign out
+        </button>
+      </div>
     </div>
   );
 };

@@ -18,11 +18,13 @@ const SignIn = (props: RouteComponentProps) => {
   return (
     <div>
       <HeaderBar />
-      <h1>Sign In</h1>
-      <div>
-        <button onClick={signInAnonHandler}>Sign in Anonymously</button>
-        <p>or</p>
-        <button onClick={signInWithGoogleHandler}>Sign in with Google</button>
+      <div className="signin-page">
+        <h1>Sign In</h1>
+        <div>
+          <button onClick={signInAnonHandler}>Sign in Anonymously</button>
+          <p>or</p>
+          <button onClick={signInWithGoogleHandler}>Sign in with Google</button>
+        </div>
       </div>
     </div>
   );
