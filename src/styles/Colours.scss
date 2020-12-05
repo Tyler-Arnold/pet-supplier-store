@@ -4,8 +4,8 @@ $neutral: #d5c7bd;
 $accent: #498374;
 $sub-accent: #7d8b82;
 
-$main-background: $neutral;
-$sub-background: lighten($neutral, 5);
+$main-background: lighten($neutral, 10);
+$sub-background: lighten($neutral, 20);
 $header-background: $sub-highlight;
 
 $main-text: darken($accent, 50);
