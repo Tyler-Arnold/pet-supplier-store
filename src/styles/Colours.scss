@@ -1,9 +1,15 @@
-$main-background: #d3d3d3;
-$sub-background: #cfbdbd;
-$header-background: #dbffff;
+$highlight: #e23a3b;
+$sub-highlight: #df8757;
+$neutral: #d5c7bd;
+$accent: #498374;
+$sub-accent: #7d8b82;
 
-$main-text: #000000;
-$sub-text: #2f4f4f;
+$main-background: $neutral;
+$sub-background: lighten($neutral, 5);
+$header-background: $sub-highlight;
 
-$border-main: #8a8a8a;
-$border-subtle: #cacaca;
+$main-text: darken($accent, 50);
+$sub-text: darken($sub-accent, 20);
+
+$border-main: $accent;
+$border-subtle: $sub-accent;

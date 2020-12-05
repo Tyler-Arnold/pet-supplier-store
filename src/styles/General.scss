@@ -1,14 +1,26 @@
 button {
   font-weight: bold;
-  background-color: $header-background;
+  background-color: saturate($header-background, 50%);
   border: 0;
   border-radius: 0.7em;
   padding: 0.5em 0.7em;
-  &:hover{
+  &:hover {
     background-color: darken($header-background, 10);
   }
-  &:focus{
+  &:focus {
     background-color: darken($header-background, 15);
     box-shadow: 0.1em 0.05em 0 0.5em inset $sub-text;
   }
+}
+
+[class$="-page"],
+[class*="page "] {
+  margin: 1em 5em;
+  padding: 1em 3em;
+  box-shadow: 0 0 0.5em -0.4em $sub-text;
+}
+
+h1 {
+  margin-top: 0.2em;
+  margin-bottom: 0.7em;
 }

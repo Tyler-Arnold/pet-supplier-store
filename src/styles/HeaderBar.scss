@@ -22,11 +22,11 @@
       display: flex;
       height: 100%;
       padding: 0 0.7em;
-      border-left: 1px solid lightgrey;
+      border-left: 1px solid $accent;
       align-items: center;
 
-      background-color: desaturate($header-background, 20%);
-      color: $sub-text;
+      background-color: saturate($header-background, 10%);
+      color: $neutral;
       text-decoration: none;
       transition: ease-in 0.3s;
       > p {
@@ -34,13 +34,13 @@
       }
     }
     > a:last-of-type {
-      border-right: 1px solid lightgrey;
+      border-right: 1px solid $accent;
     }
     > a:hover {
       background-color: darken($color: $header-background, $amount: 10%);
     }
     > a:visited {
-      color: lighten($color: $sub-text, $amount: 10%);
+      color: lighten($color: $neutral, $amount: 10%);
     }
   }
 
@@ -56,7 +56,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: desaturate($color: $header-background, $amount: 10%);
+  background-color: saturate($color: $header-background, $amount: 10%);
   height: 100%;
 
   border-left: 1px solid lightgrey;
@@ -84,7 +84,7 @@
 
     border-radius: 0.9em;
     box-shadow: 0 0 0.09em #888888;
-    background-color: $header-background;
+    background-color: saturate($color: $header-background, $amount: 20%);
 
     > div {
       margin: auto;
@@ -116,14 +116,16 @@
 
   border: 1px solid $border-main;
 
-  animation: slide-out 1s;
+  &.menu-hiding {
+    animation: slide-out 1s;
 
-  @keyframes slide-out {
-    from {
-      top: 0em;
-    }
-    to {
-      top: -10em;
+    @keyframes slide-out {
+      from {
+        top: 0em;
+      }
+      to {
+        top: -10em;
+      }
     }
   }
 
@@ -158,7 +160,7 @@
   }
 }
 
-.profile-dropdown-menu.menu-shown {
+.profile-dropdown-menu.menu-dropped {
   position: absolute;
   top: 0em;
   display: flex;

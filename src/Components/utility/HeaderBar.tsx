@@ -39,16 +39,21 @@ const HeaderBar = () => {
 };
 
 const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
-  const [isProfileDropped, setIsProfileDropped] = useState<boolean>(false);
+  const [isProfileDropped, setIsProfileDropped] = useState<"dropped" | "hidden" | "hiding">("hidden");
 
   const dropdownClickHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.preventDefault();
-    setIsProfileDropped(!isProfileDropped);
+    if (isProfileDropped === "dropped") {
+      setIsProfileDropped("hiding");
+      setTimeout(() => setIsProfileDropped("hidden"), 1000);
+    } else if (isProfileDropped === "hidden") {
+      setIsProfileDropped("dropped");
+    }
   };
   return (
     <div className="profile-dropdown">
       <ProfileBar
-        isShown={!isProfileDropped}
+        isShown={isProfileDropped === "dropped" ? false : true}
         username={props.username}
         photoURL={props.photoURL}
         onClick={dropdownClickHandler}
@@ -64,13 +69,13 @@ const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
 };
 
 const ProfileDropdownMenu = (props: {
-  isProfileDropped: boolean;
+  isProfileDropped: "dropped" | "hidden" | "hiding";
   username: string;
   photoURL?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }) => {
   return (
-    <div className={`profile-dropdown-menu ${props.isProfileDropped ? "menu-shown" : "menu-hidden"}`}>
+    <div className={`profile-dropdown-menu menu-${props.isProfileDropped}`}>
       <div
         className="sign-out dropdown-bar"
         onClick={() => {
