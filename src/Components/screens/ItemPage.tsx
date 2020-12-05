@@ -34,7 +34,9 @@ const ItemPage = (props: ItemPageProps) => {
           <p>{item.description}</p>
         </div>
         <button onClick={() => basket.addToBasket(item)}>Add to Basket</button>
-        <Link to={`/item/update/${item.itemId}`}></Link>
+        <Link className="button" to={`/item/update/${item.itemId}`}>
+          Update this Item
+        </Link>
       </div>
     </div>
   );

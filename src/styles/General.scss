@@ -1,11 +1,20 @@
-button {
+button,
+.button {
   font-weight: bold;
   background-color: saturate($header-background, 50%);
+  text-decoration: none;
+  color: $main-text;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: medium;
+
+  box-sizing: border-box;
+  display: inline-block;
   border: 0;
   border-radius: 0.7em;
   padding: 0.5em 0.7em;
   height: max-content;
   width: max-content;
+  margin: 0.3em 0.5em;
 
   &:hover {
     background-color: darken($header-background, 10);
