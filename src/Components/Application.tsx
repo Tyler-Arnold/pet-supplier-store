@@ -8,6 +8,8 @@ import { UserContainer } from "./../containers/UserContainer";
 import { StockContainer } from "./../containers/StockContainer";
 import ItemPage from "./screens/ItemPage";
 import BasketPage from "./screens/BasketPage";
+import NewItemPage from "./screens/NewItemPage";
+import UpdateItemPage from "./screens/UpdateItemPage";
 
 function Application() {
   const user = useContainer(UserContainer).user;
@@ -23,14 +25,28 @@ function Application() {
   }, [token]);
 
   return user ? (
-    <Router>
-      <HomePage path="/" />
-      <HomePage path="/items/" />
-      <ItemPage path="/item/:itemId" />
-      <ProfilePage path="/specials/" />
-      <ProfilePage path="/profile/" />
-      <BasketPage path="/basket/" />
-    </Router>
+    user.isAnonymous ? ( // Anonymous users
+      <Router>
+        <HomePage path="/" />
+        <HomePage path="/items/" />
+        <ItemPage path="/item/:itemId" />
+        <ProfilePage path="/specials/" />
+        <ProfilePage path="/profile/" />
+        <BasketPage path="/basket/" />
+      </Router>
+    ) : (
+      // Authenticated users
+      <Router>
+        <HomePage path="/" />
+        <HomePage path="/items/" />
+        <ItemPage path="/item/:itemId" />
+        <ProfilePage path="/specials/" />
+        <ProfilePage path="/profile/" />
+        <BasketPage path="/basket/" />
+        <NewItemPage path="/item/new/" />
+        <UpdateItemPage path="/item/update/:itemId" />
+      </Router>
+    )
   ) : (
     <Router>
       <SignIn path="/" default={true} />

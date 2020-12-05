@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
+import { Link, RouteComponentProps } from "@reach/router";
 import { useContainer } from "unstated-next";
 import { StockContainer } from "../../containers/StockContainer";
 import HeaderBar from "../utility/HeaderBar";
@@ -34,6 +34,7 @@ const ItemPage = (props: ItemPageProps) => {
           <p>{item.description}</p>
         </div>
         <button onClick={() => basket.addToBasket(item)}>Add to Basket</button>
+        <Link to={`/item/update/${item.itemId}`}></Link>
       </div>
     </div>
   );

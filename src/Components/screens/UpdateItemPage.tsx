@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import HeaderBar from "../utility/HeaderBar";
 import { Item } from "../../getters";
+import { StockContainer } from "../../containers/StockContainer";
+import { useContainer } from "unstated-next";
 
 interface FormState {
   itemTitle: string;
@@ -11,18 +13,40 @@ interface FormState {
 }
 
 interface UpdateItemPageProps extends RouteComponentProps {
-  item: Item;
+  itemId?: string;
 }
 
 const UpdateItemPage = (props: UpdateItemPageProps) => {
+  const stock = useContainer(StockContainer).stock;
+
   const initialState: FormState = {
-    itemTitle: props.item.title,
-    itemDescription: props.item.description,
-    itemPrice: props.item.price ?? 5.99,
-    itemImageUri: props.item.imageUri ?? "Set an appropriate image by pasting a direct link here",
+    itemTitle: "Blah",
+    itemDescription: "Description blah",
+    itemPrice: 5.69,
+    itemImageUri: "Set an inappropriate image by pasting a direct link here",
   };
 
   const [state, setState] = useState<FormState>(initialState);
+
+  const itemId = props.itemId;
+  if (!itemId) {
+    return <div>no</div>;
+  }
+
+  const item = stock?.find((item) => item.itemId === Number.parseInt(itemId));
+
+  if (!item) {
+    return <div>no</div>;
+  }
+
+  const itemState: FormState = {
+    itemTitle: item.title,
+    itemDescription: item.description,
+    itemPrice: item.price ?? 5.99,
+    itemImageUri: item.imageUri ?? "Set an appropriate image by pasting a direct link here",
+  };
+
+  setState(itemState);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     //TODO put some api stuff here so it actually creates the item
