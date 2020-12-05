@@ -4,6 +4,8 @@ export interface Item {
   itemId: number;
   title: string;
   description: string;
+  price?: number;
+  imageUri?: string;
 }
 
 export const GetStock = async (userToken?: string): Promise<Item[] | number> => {

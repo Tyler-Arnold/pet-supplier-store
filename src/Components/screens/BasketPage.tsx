@@ -15,6 +15,7 @@ const BasketPage = (props: RouteComponentProps) => {
         <div className="basket-list">
           <h1>Your Basket</h1>
           {basket.basket ? <ItemList items={basket.basket} /> : <h2>Your Basket is Empty</h2>}
+          {basket.basket ? <button>Order</button> : <></>}
         </div>
       </div>
     </div>
