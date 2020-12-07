@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import HeaderBar from "../utility/HeaderBar";
+import { Item, SetNewStock } from "../../getters";
+import { useContainer } from "unstated-next";
+import { UserContainer } from "../../containers/UserContainer";
 
 interface FormState {
   itemTitle: string;
   itemDescription: string;
   itemPrice: number;
   itemImageUri: string | undefined;
+  status: "notsubmitted" | "submitting" | "submitted" | "error";
 }
 
 const NewItemPage = (props: RouteComponentProps) => {
@@ -15,12 +19,32 @@ const NewItemPage = (props: RouteComponentProps) => {
     itemDescription: "Write an informative description for the new item",
     itemPrice: 5.99,
     itemImageUri: "Set an appropriate image by pasting a direct link here",
+    status: "notsubmitted",
   };
 
   const [state, setState] = useState<FormState>(initialState);
 
+  const user = useContainer(UserContainer);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    //TODO put some api stuff here so it actually creates the item
+    const newItem: Item = {
+      itemId: 1,
+      title: state.itemTitle,
+      description: state.itemDescription,
+      imageUri: state.itemImageUri,
+      price: state.itemPrice,
+    };
+    if (user.token) {
+      const result = SetNewStock(newItem, user.token);
+
+      result.then((res) => {
+        if (res) {
+          setState({ ...state, status: "submitted" });
+        } else {
+          setState({ ...state, status: "error" });
+        }
+      });
+    }
     event.preventDefault();
   };
 
@@ -55,7 +79,7 @@ const NewItemPage = (props: RouteComponentProps) => {
               type="number"
               min="0"
               max="100"
-              step="1"
+              step="0.01"
               value={state.itemPrice}
               onChange={handleInputChange}
             />
@@ -64,7 +88,7 @@ const NewItemPage = (props: RouteComponentProps) => {
             Item Image URI:
             <input name="itemImageUri" type="text" value={state.itemImageUri} onChange={handleInputChange} />
           </label>
-          <input type="submit" value="Create New Item" />
+          <input className={`button-${state.status}`} type="submit" value="Create New Item" />
         </form>
       </div>
     </div>

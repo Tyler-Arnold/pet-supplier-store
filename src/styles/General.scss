@@ -1,9 +1,10 @@
 button,
-.button {
+.button,
+[class^="button-"] {
   font-weight: bold;
   background-color: saturate($header-background, 50%);
   text-decoration: none;
-  color: $main-text;
+  color: $sub-background;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: medium;
 
@@ -21,7 +22,40 @@ button,
   }
   &:focus {
     background-color: darken($header-background, 15);
-    box-shadow: 0.1em 0.05em 0 0.5em inset $sub-text;
+    box-shadow: 0 0 0 0.1em inset $sub-text;
+  }
+}
+.button-submitting {
+  $btn-col: $sub-accent;
+  background-color: $btn-col;
+  &:hover {
+    background-color: darken($btn-col, 10);
+  }
+  &:focus {
+    background-color: darken($btn-col, 15);
+    box-shadow: 0 0 0 0.1em inset saturate($btn-col, 100%);
+  }
+}
+.button-submitted {
+  $btn-col: $accent;
+  background-color: $btn-col;
+  &:hover {
+    background-color: darken($btn-col, 10);
+  }
+  &:focus {
+    background-color: darken($btn-col, 15);
+    box-shadow: 0 0 0 0.1em inset saturate($btn-col, 100%);
+  }
+}
+.button-error {
+  $btn-col: $highlight;
+  background-color: $btn-col;
+  &:hover {
+    background-color: darken($btn-col, 10);
+  }
+  &:focus {
+    background-color: darken($btn-col, 15);
+    box-shadow: 0 0 0 0.1em inset saturate($btn-col, 100%);
   }
 }
 
