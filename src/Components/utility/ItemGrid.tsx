@@ -38,7 +38,7 @@ const ItemBox = (props: { item: Item }) => {
   return (
     <Link to={`/item/${props.item.itemId}`} className="item-box">
       <div className="item-image">
-        <img alt={itemTitle}></img>
+        <img alt={itemTitle} src={props.item.imageUri}></img>
       </div>
       <h3 className="item-title">{itemTitle}</h3>
       <p className="item-desc">{prepItemString(props.item.description)}</p>

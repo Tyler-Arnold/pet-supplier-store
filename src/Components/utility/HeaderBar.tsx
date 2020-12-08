@@ -28,6 +28,13 @@ const HeaderBar = () => {
           <Link to="/profile/">
             <p>Other Stuff</p>
           </Link>
+          {user.user?.isAnonymous === false ? (
+            <Link to="/item/new/">
+              <p>Add New Item</p>
+            </Link>
+          ) : (
+            <></>
+          )}
           <Link to="/basket/">
             <p>Basket{basketCount > 0 ? ` (${basketCount})` : ""}</p>
           </Link>

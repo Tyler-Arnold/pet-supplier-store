@@ -4,6 +4,7 @@
   $item-box-padding: 1rem;
 
   width: 10em;
+  height: 15em;
   margin: 2em 1em;
   border: 0;
   background-color: $main-background;
@@ -21,23 +22,31 @@
   }
 
   > .item-image {
-    padding: 0.3em;
-    width: auto;
-    height: auto;
+    margin: 0.3em;
+    width: 9.4em;
+    height: 6em;
+    overflow: hidden;
     > img {
       display: flex;
       background-color: lightcyan;
-      height: 6em;
+      height: auto;
+      width: inherit;
     }
   }
   > .item-title {
+    height: 1.5em;
     margin: 0;
     padding: 0.3em $item-box-padding;
     padding-bottom: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   > .item-desc {
     margin: 0;
     padding: 0.3em $item-box-padding;
+    flex-grow: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 
