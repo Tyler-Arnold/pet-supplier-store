@@ -49,7 +49,11 @@ function Application() {
     )
   ) : (
     <Router>
-      <SignIn path="/" default={true} />
+      <HomePage path="/" />
+      <HomePage path="/items/" />
+      <ItemPage path="/item/:itemId" />
+      <BasketPage path="/basket/" />
+      <SignIn path="/signin/" />
     </Router>
   );
 }
