@@ -1,0 +1,26 @@
+.new-item-page {
+  form {
+    display: flex;
+    flex-direction: column;
+    input[type="submit"] {
+      margin: 1em;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+
+      font-weight: bold;
+
+      box-shadow: 0 0.1em 0.5em -0.5em $sub-text;
+
+      input,
+      textarea {
+        width: 50em;
+        margin: 1em 2.5em 2.2em;
+      }
+      textarea {
+        height: 10em;
+      }
+    }
+  }
+}
