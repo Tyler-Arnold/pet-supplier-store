@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
 import { useContainer } from "unstated-next";
 import firebase from "firebase";
@@ -7,7 +7,8 @@ import HeaderBar from "../utility/HeaderBar";
 import ItemGrid from "../utility/ItemGrid";
 
 const HomePage = (props: RouteComponentProps) => {
-  const stock = useContainer(StockContainer).stock;
+  const stockContainer = useContainer(StockContainer);
+  const stock = stockContainer.stock;
 
   return (
     <div>

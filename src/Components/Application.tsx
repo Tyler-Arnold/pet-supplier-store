@@ -16,6 +16,14 @@ function Application() {
   const token = useContainer(UserContainer).token;
   const stockContainer = useContainer(StockContainer);
 
+  // Updates stock when the app loads, now that unauthed users can view stock
+  // Has to be done here because useEffect can't be used outside of a React Component
+  useEffect(() => {
+    stockContainer.RetrieveStock();
+    //this eslint rule is causing me more trouble than its worth
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Updates stock when the user's token changes
   // Has to be done here because useEffect can't be used outside of a React Component
   useEffect(() => {
@@ -27,7 +35,7 @@ function Application() {
   return user ? (
     user.isAnonymous ? ( // Anonymous users
       <Router>
-        <HomePage path="/" />
+        <HomePage default={true} path="/" />
         <HomePage path="/items/" />
         <ItemPage path="/item/:itemId" />
         <ProfilePage path="/specials/" />
@@ -37,7 +45,7 @@ function Application() {
     ) : (
       // Authenticated users
       <Router>
-        <HomePage path="/" />
+        <HomePage default={true} path="/" />
         <HomePage path="/items/" />
         <ItemPage path="/item/:itemId" />
         <ProfilePage path="/specials/" />
@@ -49,7 +57,7 @@ function Application() {
     )
   ) : (
     <Router>
-      <HomePage path="/" />
+      <HomePage default={true} path="/" />
       <HomePage path="/items/" />
       <ItemPage path="/item/:itemId" />
       <BasketPage path="/basket/" />

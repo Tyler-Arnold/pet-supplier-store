@@ -29,7 +29,9 @@ const ItemPage = (props: ItemPageProps) => {
       <HeaderBar />
       <div className="item-page">
         <h1 className="item-title">{item.title}</h1>
-        <div className="item-image"></div>
+        <div className="item-image">
+          <img src={item.imageUri} alt={item.title} />
+        </div>
         <div className="item-description">
           <p>{item.description}</p>
         </div>

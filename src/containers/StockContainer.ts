@@ -16,15 +16,13 @@ function useStock() {
   }, 300000);
 
   async function RetrieveStock() {
-    if (token) {
-      const stock = await GetStock(token);
+    const stock = await GetStock(token ?? undefined);
 
-      if (typeof stock === "number") {
-        console.log(stock);
-        return;
-      }
-      setStock(stock);
+    if (typeof stock === "number") {
+      console.log(stock);
+      return;
     }
+    setStock(stock);
   }
 
   return { stock, RetrieveStock };

@@ -10,6 +10,8 @@ const HeaderBar = () => {
   const photoURL = user.user?.photoURL ?? undefined;
   const userName = user.user?.displayName ?? user.user?.email ?? "Anonymous";
 
+  const isUserAuthed = user.user?.isAnonymous === false ?? false;
+
   const basketCount = useContainer(BasketContainer).basket?.length ?? 0;
 
   return (
@@ -28,7 +30,7 @@ const HeaderBar = () => {
           <Link to="/profile/">
             <p>Other Stuff</p>
           </Link>
-          {user.user?.isAnonymous === false ? (
+          {isUserAuthed ? (
             <Link to="/item/new/">
               <p>Add New Item</p>
             </Link>
@@ -39,13 +41,13 @@ const HeaderBar = () => {
             <p>Basket{basketCount > 0 ? ` (${basketCount})` : ""}</p>
           </Link>
         </nav>
-        <ProfileDropdown username={userName} photoURL={photoURL} />
+        <ProfileDropdown isUser={isUserAuthed} username={userName} photoURL={photoURL} />
       </div>
     </>
   );
 };
 
-const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
+const ProfileDropdown = (props: { isUser: boolean; username: string; photoURL?: string }) => {
   const [isProfileDropped, setIsProfileDropped] = useState<"dropped" | "hidden" | "hiding">("hidden");
 
   const dropdownClickHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -67,6 +69,7 @@ const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
       />
       <ProfileDropdownMenu
         isProfileDropped={isProfileDropped}
+        isUser={props.isUser}
         username={props.username}
         photoURL={props.photoURL}
         onClick={dropdownClickHandler}
@@ -77,25 +80,36 @@ const ProfileDropdown = (props: { username: string; photoURL?: string }) => {
 
 const ProfileDropdownMenu = (props: {
   isProfileDropped: "dropped" | "hidden" | "hiding";
+  isUser: boolean;
   username: string;
   photoURL?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }) => {
   return (
     <div className={`profile-dropdown-menu menu-${props.isProfileDropped}`}>
-      <div
-        className="sign-out dropdown-bar"
-        onClick={() => {
-          firebase.auth().signOut();
-        }}
-      >
-        <h4>Sign Out</h4>
-      </div>
-      <div className="profile-link dropdown-bar">
-        <Link to="/profile/">
-          <h4>Profile</h4>
-        </Link>
-      </div>
+      {props.isUser ? (
+        <>
+          <div
+            className="sign-out dropdown-bar"
+            onClick={() => {
+              firebase.auth().signOut();
+            }}
+          >
+            <h4>Sign Out</h4>
+          </div>
+          <div className="profile-link dropdown-bar">
+            <Link to="/profile/">
+              <h4>Profile</h4>
+            </Link>
+          </div>
+        </>
+      ) : (
+        <div className="sign-out dropdown-bar">
+          <Link to="/signin/">
+            <h4>Sign In</h4>
+          </Link>
+        </div>
+      )}
       <ProfileBar username={props.username} photoURL={props.photoURL} onClick={props.onClick} />
     </div>
   );
